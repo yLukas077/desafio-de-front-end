@@ -1,0 +1,89 @@
+/* ============================================================
+   Design tokens — exact values from Figma export
+   ============================================================ */
+:root {
+  /* Backgrounds — the three swatches from the style guide */
+  --bg-gray: #cacaca;
+  --bg-black: #0f0f0f;
+  --bg-blue: #2caeff;
+
+  /* Text colors */
+  --text-dark: #0f0f0f;
+  --text-white: #f9f9f9;
+
+  /* Stroke */
+  --stroke: #dfe4ea;
+
+  /* Typography scale (base 48, ratio 1.25) */
+  --fs-48: 48px;
+  --fs-38: 38px;
+  --fs-31: 31px;
+  --fs-25: 25px;
+  --fs-20: 20px;
+  --fs-16: 16px;
+
+  /* The big "display" temperature in the Figma is 128px */
+  --fs-temp: 128px;
+  --fs-degree: 42px;
+
+  /* Spacing (multiples of 4/8) */
+  --s-4: 4px;
+  --s-8: 8px;
+  --s-16: 16px;
+  --s-24: 24px;
+  --s-32: 32px;
+  --s-48: 48px;
+  --s-64: 64px;
+
+  /* Themeable surface */
+  --page-bg: var(--bg-gray);
+  --page-fg: var(--text-dark);
+}
+
+/* Theme: dark — bg black, text white */
+[data-theme='dark'] {
+  --page-bg: var(--bg-black);
+  --page-fg: var(--text-white);
+}
+
+/* Theme: blue — bg blue, text white (matches Figma Madrid screen) */
+[data-theme='blue'] {
+  --page-bg: var(--bg-blue);
+  --page-fg: var(--text-white);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--page-fg);
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
