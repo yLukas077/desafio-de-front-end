@@ -33,12 +33,14 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: process.env.BUILD_TARGET === 'docker' ? 'standalone' : undefined,
   reactStrictMode: true,
   poweredByHeader: false,
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }];
   },
 };
+
+
 
 export default nextConfig;

@@ -12,7 +12,8 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    BUILD_TARGET=docker
 # OPENWEATHER_API_KEY is intentionally not set at build time. Env is
 # validated lazily on first request, so the image is portable across
 # environments without baking in a key.
