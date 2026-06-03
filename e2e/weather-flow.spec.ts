@@ -51,7 +51,7 @@ test.describe('Weather selection flow', () => {
     await page.getByRole('button', { name: 'Vancouver' }).click();
     await expect(page.getByRole('heading', { name: 'Vancouver' })).toBeVisible();
 
-    await page.getByRole('button', { name: /back/i }).click();
+    await page.getByRole('button', { name: /choose another city/i }).click();
     await expect(page.getByRole('heading', { name: 'Weather' })).toBeVisible();
   });
 
@@ -61,6 +61,7 @@ test.describe('Weather selection flow', () => {
     );
     await page.goto('/');
     await page.getByRole('button', { name: 'Vancouver' }).click();
-    await expect(page.getByRole('alert')).toContainText(/could not load/i);
+
+    await expect(page.getByRole('alert').filter({ hasText: /could not load/i })).toBeVisible();
   });
 });
