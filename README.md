@@ -40,8 +40,8 @@ Two ways. Pick one.
 
 1. Push the repo to GitHub (see `scripts/init-git-history.sh`).
 2. On [vercel.com](https://vercel.com), import the repository.
-3. In the project's *Settings → Environment Variables*, add
-   `OPENWEATHER_API_KEY` for the *Production* and *Preview* environments.
+3. In the project's _Settings → Environment Variables_, add
+   `OPENWEATHER_API_KEY` for the _Production_ and _Preview_ environments.
 4. Optional: adjust `RATE_LIMIT_MAX`, `RATE_LIMIT_WINDOW_MS`, `LOG_LEVEL`.
 5. Trigger a deploy. Vercel picks up [`vercel.json`](./vercel.json),
    detects Next.js, and applies the security headers from
