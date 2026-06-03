@@ -1,0 +1,45 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--stroke);
+}
+
+[data-theme='dark'] .toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--stroke);
+  padding: 0;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.swatch:hover {
+  transform: scale(1.1);
+}
+.swatch:focus-visible {
+  outline: 2px solid var(--page-fg);
+  outline-offset: 2px;
+}
+.active {
+  box-shadow: 0 0 0 2px var(--page-fg);
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .swatch {
+    width: 20px;
+    height: 20px;
+  }
+}
