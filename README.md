@@ -38,7 +38,7 @@ Two ways. Pick one.
 
 **Via GitHub integration (recommended)**
 
-1. Push the repo to GitHub (see `scripts/init-git-history.sh`).
+1. Push the repo to GitHub.
 2. On [vercel.com](https://vercel.com), import the repository.
 3. In the project's _Settings → Environment Variables_, add
    `OPENWEATHER_API_KEY` for the _Production_ and _Preview_ environments.
