@@ -1,0 +1,37 @@
+# Reads OPENWEATHER_API_KEY from a sibling .env file. If missing,
+# the container starts but the API route returns 500 with a Zod error
+# listing what's wrong — by design, so misconfiguration is loud.
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: weather-app:local
+    container_name: weather-app
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      OPENWEATHER_API_KEY: ${OPENWEATHER_API_KEY:?set OPENWEATHER_API_KEY in .env}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-30}
+      RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-60000}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    read_only: true
+    # Next writes its fetch cache to .next/cache at runtime. Mount it as
+    # tmpfs so the rest of the filesystem can stay read-only and we don't
+    # carry cache state across container restarts.
+    tmpfs:
+      - /tmp
+      - /app/.next/cache
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
