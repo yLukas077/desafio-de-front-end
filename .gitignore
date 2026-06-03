@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+
+# build output
+.next
+out
+*.tsbuildinfo
+
+# test artifacts
+coverage
+playwright-report
+test-results
+.playwright
+
+# env
+.env
+.env.local
+.env*.local
+!.env.example
+
+# misc
+.DS_Store
+*.log
